@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="80dp"
+    android:paddingVertical="7dp">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_remote_support_avatar" />
+
+    <View
+        android:id="@+id/mockView2"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="9dp"
+        android:background="@drawable/chat_loading_background"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="220dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar5"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@+id/mockView2"
+        app:layout_constraintEnd_toEndOf="@+id/mockView2"
+        app:layout_constraintStart_toStartOf="@+id/mockView2"
+        app:layout_constraintTop_toTopOf="@+id/mockView2" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mockView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mockView2"
+        app:layout_constraintTop_toTopOf="@+id/mockView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

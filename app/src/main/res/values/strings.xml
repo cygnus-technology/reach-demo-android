@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">BLE Analyzer</string>
+
+    <!-- Login -->
+    <string name="login_welcome">Welcome!</string>
+    <string name="login_hint">Please log in to continue.</string>
+    <string name="login_email">Email</string>
+    <string name="login_email_placeholder">Enter Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_password_placeholder">Enter Password</string>
+    <string name="login_continue">Continue</string>
+    <string name="login_successful">Login successful!</string>
+    <string name="login_select_key">Please continue and select an API key to use.</string>
+
+    <!-- Re-authentication -->
+    <string name="reauthentication_title">Reauthenticating…</string>
+    <string name="reauthentication_subtitle">This will take a few seconds</string>
+
+    <!-- API Key Select -->
+    <string name="api_select_subtitle">Please select the API key to use.</string>
+
+    <!-- Device List -->
+    <string name="device_list_subtitle">Please select the device to troubleshoot.</string>
+
+    <!-- Account -->
+    <string name="account_title">Hello, %1$s</string>
+    <string name="account_change_product">Change API Key</string>
+    <string name="account_log_out">Log Out</string>
+    <string name="account_loading">Fetching your user info…</string>
+    <string name="account_log_out_confirmation">Are you sure you want to log out?</string>
+
+    <!-- Selected Device -->
+    <string name="selected_device_loading">Connecting to device…</string>
+    <string name="selected_device_error">Could not connect to device</string>
+    <string name="selected_device_disconnected">Disconnected from device</string>
+    <string name="selected_device_remote_support">Connect to Remote Support</string>
+    <string name="selected_device_reconnecting">Reconnecting</string>
+    <string name="selected_device_write_characteristic">Write value to characteristic</string>
+    <string name="selected_device_write">Write</string>
+    <string name="selected_device_write_hint">Hex value</string>
+    <string name="selected_device_write_failed">Failed to Write Value</string>
+    <string name="selected_device_refresh">Reading characteristics</string>
+
+    <!-- PIN -->
+    <string name="pin_instruction">Please enter the PIN from the agent to get started.</string>
+    <string name="pin_placeholder">Enter PIN</string>
+    <string name="pin_back">Back</string>
+
+    <!-- Session -->
+    <string name="session_disconnect">Disconnect</string>
+    <string name="session_status">Status</string>
+    <string name="session_device_connected">Connected with %1$s</string>
+    <string name="session_device_reconnecting">Reconnecting to %1$s</string>
+    <string name="session_device_disconnected">Disconnected</string>
+    <string name="session_messaging">Messaging</string>
+    <string name="session_agent_connected">Connected to Agent</string>
+    <string name="session_agent_reconnecting">Reconnecting with Agent…</string>
+    <string name="session_agent_disconnected">Disconnected</string>
+    <string name="session_chat_placeholder">Enter message…</string>
+    <string name="session_disconnect_message_peer">Representative has disconnected from support session</string>
+    <string name="session_disconnect_confirm">Disconnect Confirmation</string>
+    <string name="session_disconnect_request">Are you sure you wish to disconnect? This will end the session.</string>
+    <string name="session_photo_library">Library</string>
+    <string name="session_capture_photo">Capture Photo</string>
+    <string name="session_capture_video">Capture Video</string>
+
+    <!-- Permissions -->
+    <string name="location_permission_title">Location permission required</string>
+    <string name="location_permission_message">Android requires location access in order to scan for Bluetooth devices.</string>
+    <string name="ok">OK</string>
+    <string name="error">Error</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Remote Support -->
+    <string name="prod_cygnus_uri">https://api.cygnusreach.com</string>
+    <string name="dev_cygnus_uri">https://api.dev.cygnusreach.com</string>
+</resources>

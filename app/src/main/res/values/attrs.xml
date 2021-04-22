@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="dividerColor" format="reference" />
+
+    <declare-styleable name="ConnectionView">
+        <attr name="connectionStatus" format="enum">
+            <enum name="disconnected" value="0" />
+            <enum name="connecting" value="1" />
+            <enum name="connected" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

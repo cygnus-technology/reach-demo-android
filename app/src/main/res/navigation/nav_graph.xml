@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/deviceListFragment">
+
+    <fragment
+        android:id="@+id/deviceListFragment"
+        android:name="com.reach_android.ui.devicelist.DeviceListFragment"
+        android:label="Cygnus Reach"
+        tools:layout="@layout/fragment_device_list" >
+        <action
+            android:id="@+id/action_deviceListFragment_to_selectedDeviceFragment"
+            app:destination="@id/selectedDeviceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedDeviceFragment"
+        android:name="com.reach_android.ui.selecteddevice.SelectedDeviceFragment"
+        android:label="SelectedDeviceFragment"
+        tools:layout="@layout/fragment_selected_device" >
+        <action
+            android:id="@+id/action_selectedDeviceFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinFragment"
+        android:name="com.reach_android.ui.pin.PinFragment"
+        android:label="PinFragment"
+        tools:layout="@layout/fragment_pin" >
+        <action
+            android:id="@+id/action_pinFragment_to_supportFragment"
+            app:destination="@id/supportFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/supportFragment"
+        android:name="com.reach_android.ui.support.SupportFragment"
+        android:label="SupportFragment"
+        tools:layout="@layout/fragment_support" />
+</navigation>

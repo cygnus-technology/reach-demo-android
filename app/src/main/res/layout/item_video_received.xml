@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="80dp"
+    android:paddingVertical="7dp">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_remote_support_avatar" />
+
+    <VideoView
+        android:id="@+id/receivedVideoView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="@id/receivedVideoThumbnail"
+        app:layout_constraintEnd_toEndOf="@id/receivedVideoThumbnail"
+        app:layout_constraintStart_toStartOf="@+id/receivedVideoThumbnail"
+        app:layout_constraintTop_toTopOf="@+id/receivedVideoThumbnail" />
+
+    <ImageView
+        android:id="@+id/receivedVideoThumbnail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bottom_border" />
+
+    <View
+        android:id="@+id/receivedVideoTapTarget"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@id/receivedVideoThumbnail"
+        app:layout_constraintEnd_toEndOf="@id/receivedVideoThumbnail"
+        app:layout_constraintStart_toStartOf="@+id/receivedVideoThumbnail"
+        app:layout_constraintTop_toTopOf="@+id/receivedVideoThumbnail" />
+
+    <LinearLayout
+        android:id="@+id/receivedVideoInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/receivedVideoThumbnail"
+        app:layout_constraintEnd_toEndOf="@+id/receivedVideoThumbnail">
+
+        <TextView
+            android:id="@+id/receivedVideoDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/video_duration_label"
+            android:paddingHorizontal="4dp"
+            android:text="0:01"
+            android:textColor="@color/white"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:id="@+id/receivedPlayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_play_icon" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
