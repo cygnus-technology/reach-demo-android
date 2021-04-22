@@ -39,11 +39,8 @@ android {
 
 repositories {
     maven {
-        url 'https://pkgs.dev.azure.com/i3-iot/_packaging/i3-iot/maven/v1'
-        name 'i3-iot'
-        authentication {
-            basic(BasicAuthentication)
-        }
+        url 'https://cygnustechnology.jfrog.io/artifactory/cygnus-gradle'
+        name 'cygnus'
     }
 }
 
@@ -66,7 +63,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
     // Remote support
-    implementation ('com.cygnusreach:sdk-android:0.0.42@aar') {
+    implementation ('com.cygnusreach:sdk-android:0.0.14@aar') {
         transitive = true
     }
 
