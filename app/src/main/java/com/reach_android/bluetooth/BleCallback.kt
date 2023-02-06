@@ -1,13 +1,15 @@
 package com.reach_android.bluetooth
 
+import android.annotation.SuppressLint
 import android.bluetooth.*
 import android.os.Handler
 import android.os.Looper
 
 class BleCallback(
-    var descriptorRead: (BluetoothDevice) -> Unit,
+    var descriptorRead: (BluetoothDevice, BluetoothGattDescriptor) -> Unit,
 ) : BluetoothGattCallback() {
 
+    @SuppressLint("MissingPermission")
     override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
         val uuid = gatt.device.address
         if (status == BluetoothGatt.GATT_SUCCESS && newState == BluetoothProfile.STATE_CONNECTED) {
@@ -22,7 +24,6 @@ class BleCallback(
             status == BluetoothGatt.GATT_SUCCESS &&
             newState == BluetoothProfile.STATE_CONNECTED -> {
                 logBle("Connected to device: ${gatt.device?.name?: "Unknown"}")
-
                 // It is widely accepted that without a delay, calling gatt.discoverServices()
                 // could silently fail without the onServicesDiscovered callback being called.
                 // The required delay needs to be longer for bonded devices
@@ -43,17 +44,18 @@ class BleCallback(
                 gatt.close()
                 logBle("Disconnect operation state change")
                 BleManager.getDevice(uuid)?.connectionStatusChanged(newState)
-                operation.onFinish(BleOperation.Result.Success)
+                operation.onFinish(BleOperation.Result.Success())
             }
             else -> {
                 gatt.close()
                 logBle("Unexpected connection state change")
                 BleManager.getDevice(uuid)?.connectionStatusChanged(newState)
-                operation?.onFinish?.invoke(BleOperation.Result.Failure("Disconnected during operation"))
+                operation?.onFinish(BleOperation.Result.Failure("Disconnected during operation"))
             }
         }
     }
 
+    @SuppressLint("MissingPermission")
     override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
         logBle("Discovered services (${if (status == BluetoothGatt.GATT_SUCCESS) "Success" else "Failure"})")
         logBle("${gatt.services.flatMap { it.characteristics }.size} characteristics")
@@ -61,7 +63,7 @@ class BleCallback(
 
         if (status == BluetoothGatt.GATT_SUCCESS) {
             BleManager.getDevice(gatt.device.address)?.connectionStatusChanged(BluetoothProfile.STATE_CONNECTED)
-            operation.onFinish(BleOperation.Result.Success)
+            operation.onFinish(BleOperation.Result.Success<Unit>())
         } else {
             gatt.disconnect()
             operation.onFinish(BleOperation.Result.Failure("Failed to discover services"))
@@ -79,7 +81,7 @@ class BleCallback(
             return
         }
 
-        operation.onFinish(BleOperation.Result.Success)
+        operation.onFinish(BleOperation.Result.Success<Unit>())
     }
 
     override fun onDescriptorRead(gatt: BluetoothGatt, descriptor: BluetoothGattDescriptor?, status: Int) {
@@ -88,9 +90,29 @@ class BleCallback(
             operation.onFinish(BleOperation.Result.Failure("Could not read descriptor"))
             return
         }
+        if(descriptor == null) {
+            operation.onFinish(BleOperation.Result.Failure("Could not read descriptor"))
+            return
+        }
 
-        descriptorRead(gatt.device)
-        operation.onFinish(BleOperation.Result.Success)
+        descriptorRead(gatt.device, descriptor)
+        operation.onFinish(BleOperation.Result.Success(ReadDescriptorResults(descriptor, descriptor.value)))
+    }
+
+    override fun onDescriptorRead(
+        gatt: BluetoothGatt,
+        descriptor: BluetoothGattDescriptor,
+        status: Int,
+        value: ByteArray
+    ) {
+        val operation = BleManager.pendingOperation as? ReadDescriptor ?: return
+        if (status != BluetoothGatt.GATT_SUCCESS) {
+            operation.onFinish(BleOperation.Result.Failure("Could not read descriptor"))
+            return
+        }
+
+        descriptorRead(gatt.device, descriptor)
+        operation.onFinish(BleOperation.Result.Success(ReadDescriptorResults(descriptor, value)))
     }
 
     override fun onCharacteristicWrite(gatt: BluetoothGatt?, characteristic: BluetoothGattCharacteristic?, status: Int) {
@@ -103,8 +125,7 @@ class BleCallback(
             operation.onFinish(BleOperation.Result.Failure("Failed to write value for characteristic ${characteristic?.uuid}"))
             return
         }
-
-        operation.onFinish(BleOperation.Result.Success)
+        operation.onFinish(BleOperation.Result.Success<Unit>())
     }
 
     override fun onCharacteristicRead(gatt: BluetoothGatt?, characteristic: BluetoothGattCharacteristic?, status: Int) {
@@ -117,7 +138,29 @@ class BleCallback(
             operation.onFinish(BleOperation.Result.Failure("Failed to read value for characteristic ${characteristic?.uuid}"))
             return
         }
+        if(characteristic == null) {
+            operation.onFinish(BleOperation.Result.Failure("Failed to read characteristic ${characteristic?.uuid}"))
+            return
+        }
+        operation.onFinish(BleOperation.Result.Success(ReadCharacteristicResultsRaw(characteristic, characteristic.value)))
+    }
 
-        operation.onFinish(BleOperation.Result.Success)
+    override fun onCharacteristicRead(
+        gatt: BluetoothGatt,
+        characteristic: BluetoothGattCharacteristic,
+        value: ByteArray,
+        status: Int
+    ) {
+        val operation = BleManager.pendingOperation as? ReadCharacteristic ?: return
+        logBle("Read characteristic")
+        if (status == BluetoothGatt.GATT_READ_NOT_PERMITTED) {
+            operation.onFinish(BleOperation.Result.Failure("Read not permitted for characteristic ${characteristic.uuid}"))
+            return
+        } else if (status != BluetoothGatt.GATT_SUCCESS) {
+            operation.onFinish(BleOperation.Result.Failure("Failed to read value for characteristic ${characteristic.uuid}"))
+            return
+        }
+
+        operation.onFinish(BleOperation.Result.Success(ReadCharacteristicResultsRaw(characteristic, value)))
     }
 }

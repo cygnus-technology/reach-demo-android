@@ -3,38 +3,134 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/deviceListFragment">
+    app:startDestination="@id/helloFragment">
 
     <fragment
         android:id="@+id/deviceListFragment"
         android:name="com.reach_android.ui.devicelist.DeviceListFragment"
         android:label="Cygnus Reach"
-        tools:layout="@layout/fragment_device_list" >
+        tools:layout="@layout/fragment_device_list">
         <action
             android:id="@+id/action_deviceListFragment_to_selectedDeviceFragment"
-            app:destination="@id/selectedDeviceFragment" />
+            app:destination="@id/selectedDeviceFragment"/>
+        <argument
+            android:name="fromSupport"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/selectedDeviceFragment"
         android:name="com.reach_android.ui.selecteddevice.SelectedDeviceFragment"
         android:label="SelectedDeviceFragment"
-        tools:layout="@layout/fragment_selected_device" >
+        tools:layout="@layout/fragment_selected_device">
         <action
             android:id="@+id/action_selectedDeviceFragment_to_pinFragment"
             app:destination="@id/pinFragment" />
+        <argument
+            android:name="fromSupport"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="viewParameters"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/pinFragment"
         android:name="com.reach_android.ui.pin.PinFragment"
         android:label="PinFragment"
-        tools:layout="@layout/fragment_pin" >
+        tools:layout="@layout/fragment_pin" />
+    <fragment
+        android:id="@+id/supportMessagesFragment"
+        android:name="com.reach_android.ui.support.SupportMessagesFragment"
+        tools:layout="@layout/fragment_support_messages" />
+    <fragment
+        android:id="@+id/supportDeviceFragment"
+        android:name="com.reach_android.ui.support.SupportDeviceFragment"
+        tools:layout="@layout/fragment_support_device_logs" >
         <action
-            android:id="@+id/action_pinFragment_to_supportFragment"
-            app:destination="@id/supportFragment" />
+            android:id="@+id/action_supportDeviceFragment_to_deviceListFragment"
+            app:destination="@id/deviceListFragment" />
+        <action
+            android:id="@+id/action_supportDeviceFragment_to_selectedDeviceFragment"
+            app:destination="@id/selectedDeviceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/supportFragment"
-        android:name="com.reach_android.ui.support.SupportFragment"
-        android:label="SupportFragment"
-        tools:layout="@layout/fragment_support" />
+        android:id="@+id/supportScreenFragment"
+        android:name="com.reach_android.ui.support.SupportScreenFragment"
+        tools:layout="@layout/fragment_support_screen_share">
+        <argument
+            android:name="connectCommandID"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/supportVideoFragment"
+        android:name="com.reach_android.ui.support.SupportVideoFragment"
+        tools:layout="@layout/fragment_support_video_share">
+        <argument
+            android:name="connectCommandID"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/helloFragment"
+        android:name="com.reach_android.ui.hello.HelloFragment"
+        android:label="Hello"
+        tools:layout="@layout/fragment_hello">
+        <action
+            android:id="@+id/action_helloFragment_to_deviceListFragment"
+            app:destination="@id/deviceListFragment" />
+        <action
+            android:id="@+id/action_helloFragment_to_pinFragment"
+            app:destination="@id/pinFragment" />
+        <action
+            android:id="@+id/action_helloFragment_to_connectPromptFragment"
+            app:destination="@id/connectPromptFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_supportMessagesFragment"
+        app:destination="@id/supportMessagesFragment"
+
+
+        app:popUpToInclusive="false" />
+    <action
+        android:id="@+id/action_global_supportDeviceFragment"
+        app:destination="@id/supportDeviceFragment"
+
+
+        />
+    <action
+        android:id="@+id/action_global_supportScreenFragment"
+        app:destination="@id/supportScreenFragment"
+
+
+        />
+    <action
+        android:id="@+id/action_global_supportVideoFragment"
+        app:destination="@id/supportVideoFragment"
+
+
+        />
+    <action
+        android:id="@+id/action_global_deviceListFragment"
+        app:destination="@id/deviceListFragment"
+
+
+        />
+    <fragment
+        android:id="@+id/connectPromptFragment"
+        android:name="com.reach_android.ui.connectprompt.ConnectPromptFragment"
+        android:label="Connect"
+        tools:layout="@layout/fragment_connect_device_system_prompt">
+        <action
+            android:id="@+id/action_connectPromptFragment_to_deviceListFragment"
+            app:destination="@id/deviceListFragment"
+            app:popUpTo="@id/helloFragment" />
+        <action
+            android:id="@+id/action_connectPromptFragment_to_helloFragment"
+            app:destination="@id/helloFragment" />
+    </fragment>
 </navigation>

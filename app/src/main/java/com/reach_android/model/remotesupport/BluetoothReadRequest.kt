@@ -6,5 +6,7 @@ data class BluetoothReadRequest(
 
 data class BluetoothReadResponse(
     val value: String,
-    val encoding: String = "utf-8"
-)
+    val data: ByteArray
+) {
+    val version: Int = 3
+}

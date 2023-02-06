@@ -5,6 +5,9 @@ package com.reach_android.model.remotesupport
  */
 data class DeviceData(
     val localName: String,
+    val macAddress: String,
+    val rssi: Int,
+    val signalStrength: Int,
     val advertisementData: HashMap<String, String>,
     val services: List<ServiceInfo>
 )
@@ -21,5 +24,10 @@ data class CharacteristicInfo(
     val notify: Boolean,
     val name: String?,
     val value: String?,
+    val data: ByteArray,
     val encoding: String? = "hex"
+)
+
+data class DeviceList(
+    val devices: List<DeviceData>
 )

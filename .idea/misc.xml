@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.21822916666666667" />
+        <entry key="../../.gradle/caches/transforms-3/aba40c675cf97a093bd8b9deae36b585/transformed/jetified-core-1.32.0/res/menu/dev_menu_logs_menu.xml" value="0.3703125" />
+        <entry key="app/src/main/res/drawable-night/ic_cygnuslogo.xml" value="0.1945" />
+        <entry key="app/src/main/res/drawable/bottom_border.xml" value="0.2825" />
+        <entry key="app/src/main/res/drawable/bottom_border_thick.xml" value="0.535" />
+        <entry key="app/src/main/res/drawable/bottom_border_white.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/bottom_nav_colors.xml" value="0.535" />
+        <entry key="app/src/main/res/drawable/bottom_nav_text_colors.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/btn_orange.xml" value="0.3335" />
+        <entry key="app/src/main/res/drawable/btn_outlined.xml" value="0.1825" />
+        <entry key="app/src/main/res/drawable/btn_outlined_light.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/chat_background_received.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/chat_background_sent.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/chat_loading_background.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/connected_icon.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/disconnected_icon.xml" value="0.3335" />
+        <entry key="app/src/main/res/drawable/edit_text_background.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/ic_camera_icon.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/ic_close_icon.xml" value="0.3335" />
+        <entry key="app/src/main/res/drawable/ic_cygnus_logo.xml" value="0.263" />
+        <entry key="app/src/main/res/drawable/ic_cygnuslogo.xml" value="0.1945" />
+        <entry key="app/src/main/res/drawable/ic_cygnuslogo_reach.xml" value="0.184" />
+        <entry key="app/src/main/res/drawable/ic_cygnusreach_logo.xml" value="0.255" />
+        <entry key="app/src/main/res/drawable/ic_email_send_icon_disabled.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/ic_email_send_icon_enabled.xml" value="0.1825" />
+        <entry key="app/src/main/res/drawable/ic_generalsupport_illustration.xml" value="0.2925" />
+        <entry key="app/src/main/res/drawable/ic_keyboard_arrow_right.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/ic_login_success.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/ic_messages_illustration.xml" value="0.4955" />
+        <entry key="app/src/main/res/drawable/ic_nav_device_24.xml" value="0.3335" />
+        <entry key="app/src/main/res/drawable/ic_nav_message_24.xml" value="0.4955" />
+        <entry key="app/src/main/res/drawable/ic_nav_video_share_24.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/ic_outline_photo_camera_24.xml" value="0.2925" />
+        <entry key="app/src/main/res/drawable/ic_play_icon.xml" value="0.3335" />
+        <entry key="app/src/main/res/drawable/ic_remote_support_avatar.xml" value="0.3335" />
+        <entry key="app/src/main/res/drawable/ic_signal_0.xml" value="0.3335" />
+        <entry key="app/src/main/res/drawable/ic_systemprompt_illustration.xml" value="0.2925" />
+        <entry key="app/src/main/res/drawable/ic_user_icon.xml" value="0.263" />
+        <entry key="app/src/main/res/drawable/ic_videoshare_illustration.xml" value="0.535" />
+        <entry key="app/src/main/res/drawable/reconnecting_icon.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/send_icon.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/splash_background.xml" value="0.241" />
+        <entry key="app/src/main/res/drawable/top_border.xml" value="0.279" />
+        <entry key="app/src/main/res/drawable/video_duration_label.xml" value="0.2825" />
+        <entry key="app/src/main/res/drawable/write_characteristic_background.xml" value="0.2825" />
+        <entry key="app/src/main/res/font/roboto.xml" value="0.4088541666666667" />
+        <entry key="app/src/main/res/layout-v26/fragment_support_screen_share.xml" value="0.55546875" />
+        <entry key="app/src/main/res/layout-v26/item_device_data.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout-v26/item_device_header.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/bottom_sheet_camera.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.42386016845703123" />
+        <entry key="app/src/main/res/layout/fragment_connect_device_permissions.xml" value="0.55546875" />
+        <entry key="app/src/main/res/layout/fragment_connect_device_system_prompt.xml" value="0.55625" />
+        <entry key="app/src/main/res/layout/fragment_device_list.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_device_logs.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_hello.xml" value="0.33857727050781256" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.55546875" />
+        <entry key="app/src/main/res/layout/fragment_pin.xml" value="0.4625908507909363" />
+        <entry key="app/src/main/res/layout/fragment_product_list.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_reauthenticate.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_selected_device.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_support.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_support_device_logs.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_support_device_parameters.xml" value="0.60859375" />
+        <entry key="app/src/main/res/layout/fragment_support_messages.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_support_screen_share.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_support_test.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_support_video_share.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_video_share.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/header_layout.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_chat_loading.xml" value="0.80546875" />
+        <entry key="app/src/main/res/layout/item_chat_received.xml" value="0.80546875" />
+        <entry key="app/src/main/res/layout/item_chat_sent.xml" value="0.80546875" />
+        <entry key="app/src/main/res/layout/item_device.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_device_data.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/item_device_header.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_image_received.xml" value="0.80546875" />
+        <entry key="app/src/main/res/layout/item_image_sent.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/item_product.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/item_video_received.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/item_video_sent.xml" value="0.80546875" />
+        <entry key="app/src/main/res/layout/sample_support_view.xml" value="0.55546875" />
+        <entry key="app/src/main/res/layout/support_view_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.3703125" />
+        <entry key="app/src/main/res/menu/top_app_bar.xml" value="0.3703125" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

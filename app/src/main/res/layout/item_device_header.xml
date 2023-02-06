@@ -12,16 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:autoSizeMinTextSize="12sp"
-        android:autoSizeTextType="uniform"
         android:fontFamily="@font/roboto_medium"
         android:maxLines="1"
         android:paddingVertical="13dp"
-        android:text="Header"
-        android:textColor="#DE000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Header" />
 </androidx.constraintlayout.widget.ConstraintLayout>

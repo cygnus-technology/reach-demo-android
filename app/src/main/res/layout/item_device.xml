@@ -44,8 +44,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/roboto"
                 android:maxLines="1"
-                android:text="@{device.name == null ? `Unknown` : device.name}"
-                android:textColor="@color/black"
+                android:text="@{device.displayName}"
                 android:textSize="16sp" />
 
             <TextView
@@ -57,7 +56,6 @@
                 android:fontFamily="@font/roboto"
                 android:maxLines="1"
                 android:text="@{device.uuid}"
-                android:textColor="@color/black"
                 android:textSize="12sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

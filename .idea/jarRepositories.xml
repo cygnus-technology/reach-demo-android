@@ -27,9 +27,34 @@
       <option name="url" value="https://repo.maven.apache.org/maven2/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="i3-iot" />
+      <option name="name" value="i3-iot" />
+      <option name="url" value="https://pkgs.dev.azure.com/i3-iot/_packaging/i3-iot/maven/v1" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://dl.bintray.com/google/webrtc" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="cygnus" />
       <option name="name" value="cygnus" />
       <option name="url" value="https://cygnustechnology.jfrog.io/artifactory/cygnus-gradle" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="cygnus" />
+      <option name="name" value="cygnus" />
+      <option name="url" value="https://dev.azure.com/i3-iot/CygnusReach/_packaging?_a=feed&amp;feed=Reach" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Reach" />
+      <option name="name" value="Reach" />
+      <option name="url" value="https://pkgs.dev.azure.com/i3-iot/CygnusReach/_packaging/Reach/maven/v1" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://jitpack.io" />
     </remote-repository>
   </component>
 </project>

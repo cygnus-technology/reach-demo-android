@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.reach_android.R
+import com.reach_android.bluetooth.BleManager
 import com.reach_android.bluetooth.BleManager.canWrite
-import com.reach_android.bluetooth.formattedValue
 import com.reach_android.bluetooth.name
+import com.reach_android.model.BleDevice
 import kotlinx.android.synthetic.main.item_device_data.view.*
 import kotlinx.android.synthetic.main.item_device_header.view.*
 
@@ -48,11 +49,14 @@ class SelectedDeviceAdapter(
             }
             is Row.Characteristic -> {
                 view.dataNameLabel.text = row.title
-                view.dataValueLabel.text = row.value.formattedValue?: ""
-                view.setOnClickListener { onClick(row.value) }
-                view.writableIndicator.visibility =
-                        if (row.value.canWrite()) View.VISIBLE
-                        else View.INVISIBLE
+                view.dataValueLabel.text =  BleManager.getCachedCharacteristic(row.deviceId, row.value.uuid)?.formatted ?: ""
+                if (row.value.canWrite()){
+                    view.setOnClickListener { onClick(row.value) }
+                    view.writableIndicator.visibility = View.VISIBLE
+                } else {
+                    view.setOnClickListener(null)
+                    view.writableIndicator.visibility = View.INVISIBLE
+                }
             }
             is Row.AdvertisementData -> {
                 view.dataNameLabel.text = row.title
@@ -68,12 +72,12 @@ class SelectedDeviceAdapter(
                 const val type = 0
             }
         }
-        class Characteristic(val value: BluetoothGattCharacteristic) : Row(value.name, type) {
+        class Characteristic(val deviceId: String, val value: BluetoothGattCharacteristic) : Row(value.name, type) {
             companion object {
                 const val type = 1
             }
         }
-        class AdvertisementHeader() : Row("Advertisement Data", type) {
+        class AdvertisementHeader : Row("Advertisement Data", type) {
             companion object {
                 const val type = 2
             }

@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="dividerColor" format="reference" />
-
     <declare-styleable name="ConnectionView">
         <attr name="connectionStatus" format="enum">
             <enum name="disconnected" value="0" />
             <enum name="connecting" value="1" />
             <enum name="connected" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SupportView">
+        <attr name="title" format="string" />
+        <attr name="buttonText" format="string" />
+        <attr name="alternateButtonText" format="string" />
+        <attr name="buttonIcon" format="reference" />
+        <attr name="buttonIconSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="HeaderView">
+        <attr name="accountButtonVisibility" format="enum">
+            <enum name="VISIBLE" value="0" />
+            <enum name="GONE" value="8" />
         </attr>
     </declare-styleable>
 </resources>

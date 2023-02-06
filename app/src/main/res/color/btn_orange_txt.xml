@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Disable background -->
     <item android:state_enabled="false"
-        android:color="#4D3C3C43" />
+        android:color="#66FFFFFF" />
 
     <!-- Enabled background -->
     <item android:state_enabled="true"
-        android:color="@color/white" />
+        android:color="#ffffff" />
 </selector>

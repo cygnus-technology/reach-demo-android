@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_device"
+        android:title="@string/bottom_nav_device"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/ic_nav_device_24"/>
+    <item
+        android:id="@+id/nav_messaging"
+        android:title="@string/bottom_nav_messaging"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/ic_nav_message_24"/>
+    <item
+        android:id="@+id/nav_video_share"
+        android:title="@string/bottom_nav_video_share"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/ic_nav_video_share_24"/>
+    <item
+        android:id="@+id/nav_screen_share"
+        android:enabled="true"
+        android:icon="@drawable/ic_nav_screen_share_24"
+        android:title="@string/bottom_nav_screen_share"
+        app:showAsAction="always" />
+</menu>

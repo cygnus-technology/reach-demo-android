@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="default_button" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">4dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+
+    <style name="outline_button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">4dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/mtrl_text_btn_text_color_selector</item>
+        <item name="strokeColor">@color/mtrl_text_btn_text_color_selector</item>
+    </style>
+
+    <style name="text_button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="cornerRadius">4dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="filled_card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">6dp</item>
+    </style>
+
+    <style name="app_bar" parent="Widget.Material3.AppBarLayout">
+        <item name="android:backgroundTint">@color/md_theme_light_primary</item>
+    </style>
+
+    <style name="toolbar" parent="Widget.Material3.Toolbar">
+        <item name="titleTextColor">@color/md_theme_light_onPrimary</item>
+    </style>
+
+</resources>

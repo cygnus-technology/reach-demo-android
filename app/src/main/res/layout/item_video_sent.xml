@@ -59,7 +59,6 @@
             android:background="@drawable/video_duration_label"
             android:paddingHorizontal="4dp"
             android:text="0:01"
-            android:textColor="@color/white"
             android:textSize="12dp" />
 
         <ImageView

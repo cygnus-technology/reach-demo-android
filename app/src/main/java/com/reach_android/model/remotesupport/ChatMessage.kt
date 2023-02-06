@@ -27,15 +27,4 @@ class ChatMessage(
     val video: Uri? = null,
 )
 
-/**
- * Known message categories
- */
-enum class MessageCategory(val raw: Int) {
-    DeviceData(110),
-    BluetoothReadRequest(111),
-    BluetoothWriteRequest(112),
-    DiagnosticHeartbeat(113),
-    Image(114),
-    Video(115),
-    BluetoothNotifyRequest(116)
-}
+

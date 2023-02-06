@@ -35,7 +35,6 @@
         android:id="@+id/photoLibraryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:paddingHorizontal="32dp"
         android:paddingVertical="24dp"
         android:text="@string/session_photo_library"

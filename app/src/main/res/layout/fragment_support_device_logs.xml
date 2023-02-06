@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.reach_android.ui.views.SupportView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:alternateButtonText="View Device Parameters"
+    app:buttonIcon="@drawable/ic_baseline_bluetooth_24"
+    app:buttonText="Connect to a Device"
+    app:title="Device Messages">
+
+    <ViewSwitcher
+        android:id="@+id/deviceViewSwitcher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/devicePlaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_no_device"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:scaleType="center"
+                app:layout_constraintBottom_toTopOf="@+id/lbl_share_desc_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:srcCompat="@drawable/ic_no_device_illustration" />
+
+            <TextView
+                android:id="@+id/lbl_share_desc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Device Connected"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/lbl_share_desc_text"
+                app:layout_constraintTop_toBottomOf="@+id/img_no_device" />
+
+            <TextView
+                android:id="@+id/lbl_share_desc_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Use the button below to connect to a device to begin troubleshooting."
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lbl_share_desc_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.reach_android.ui.views.LogView
+            android:id="@+id/logView"
+            android:textColor="?attr/colorOnPrimaryContainer"
+            android:textIsSelectable="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ViewSwitcher>
+</com.reach_android.ui.views.SupportView>

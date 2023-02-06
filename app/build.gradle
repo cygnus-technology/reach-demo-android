@@ -4,18 +4,19 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id "net.linguica.maven-settings" version "0.5"
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
 
     defaultConfig {
         applicationId "com.reach_android"
-        minSdkVersion 26
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 24
+        targetSdkVersion 33
+        versionCode 11
+        versionName "1.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,44 +38,55 @@ android {
     }
 }
 
-repositories {
-    maven {
-        url 'https://cygnustechnology.jfrog.io/artifactory/cygnus-gradle'
-        name 'cygnus'
-    }
-}
-
 dependencies {
-    def lifecycle_version = "2.3.0"
-    def navigation_version = "2.3.3"
+    def lifecycle_version = "2.5.1"
+    def navigation_version = "2.5.2"
+    def cognito_version = '1.32.2'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.8.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+    implementation "androidx.transition:transition-ktx:1.4.1"
+    implementation 'org.jetbrains.kotlinx:atomicfu:0.17.3'
 
-    // Live data
+    // Lifecycle coroutine scopes
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
+    // Security
+    implementation "androidx.security:security-crypto:1.1.0-alpha03"
+
+    // Retrofit API
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    // JWT decode
+    implementation 'com.auth0.android:jwtdecode:2.0.1'
+
+    // Cognito
+    implementation "com.amplifyframework:core:$cognito_version"
+    implementation "com.amplifyframework:aws-auth-cognito:$cognito_version"
+
     // Remote support
-    implementation ('com.cygnusreach:sdk-android:0.0.14@aar') {
-        transitive = true
-    }
+    implementation ('com.cygnusreach:sdk-android:0.0.49-beta38@aar') { transitive = true }
+    implementation ('com.cygnusreach:sdk-androidx:0.0.49-beta38@aar') { transitive = true }
+    implementation ('com.cygnusreach:webrtc:0.0.2') { transitive = true }
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 
-    // Gson
-    implementation 'com.google.code.gson:gson:2.8.6'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

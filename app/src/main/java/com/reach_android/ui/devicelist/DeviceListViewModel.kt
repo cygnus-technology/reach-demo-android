@@ -1,67 +1,80 @@
 package com.reach_android.ui.devicelist
 
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.reach_android.bluetooth.BleManager
 import com.reach_android.model.BleDevice
 import com.reach_android.repository.DeviceRepository
-import java.util.*
-import kotlin.concurrent.timerTask
+import com.reach_android.util.subscribe
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 /**
  * View model for [DeviceListFragment]
  */
 class DeviceListViewModel : ViewModel() {
-    private var refresh: LiveData<Unit>? = null
-    private val displayedDevices = MediatorLiveData<List<BleDevice>>()
-    private val bleDevices = BleManager.devices
-    private var searchQuery: LiveData<String>? = null
-    val devices: LiveData<List<BleDevice>> = displayedDevices
+    private val searchQuery = MutableStateFlow("")
+    private val displayedDevicesFlow = MutableStateFlow<List<BleDevice>>(emptyList())
+    private val refreshEvent = MutableSharedFlow<Unit>()
+    val displayedDevices = displayedDevicesFlow.asStateFlow()
 
-    /**
-     * Adds a search query observer to the list of BLE devices
-     */
-    fun listenToSearchQuery(query: LiveData<String>) {
-        if (searchQuery != null) return
-        searchQuery = query
-        displayedDevices.addSource(query) { text ->
-            var list = bleDevices.value?: return@addSource
-            if (text.isNotEmpty()) {
-                list = list.filter { it.name != null && it.name!!.contains(text, true) }
+
+    init {
+        BleManager.deviceAdded.subscribe(viewModelScope) {
+            refresh()
+        }
+        BleManager.deviceRemoved.subscribe(viewModelScope) {
+            refresh()
+        }
+        BleManager.deviceUpdated.subscribe(viewModelScope) {
+            refresh()
+        }
+        searchQuery.subscribe(viewModelScope) {
+            refresh()
+        }
+
+        viewModelScope.launch(Dispatchers.Default) {
+            refreshEvent.collectLatest {
+                val text = searchQuery.value.trim()
+                if (text.isNotBlank()) {
+                    displayedDevicesFlow.emit(BleManager.devices
+                        .filter { it.isValid && (it.displayName.contains(text, true)) }
+                        .sortedWith(
+                            compareByDescending<BleDevice> {
+                                it.rssiBucket.value
+                            }
+                                .thenBy(BleDevice::name)
+                                .thenBy(BleDevice::uuid)
+                        ))
+                } else {
+                    val devices = BleManager.devices
+                        .filter { it.isValid }
+                        .sortedWith(
+                            compareByDescending<BleDevice> {
+                                it.rssiBucket.value
+                            }
+                                .thenBy(BleDevice::name)
+                                .thenBy(BleDevice::uuid)
+                        )
+                    displayedDevicesFlow.emit(devices)
+                }
             }
-            displayedDevices.value = list.sortedWith(compareBy { -it.rssi })
         }
     }
 
-    fun refreshDevices(): LiveData<Unit> {
-        val existing = refresh
-        if (existing != null) return existing
-        val data = MutableLiveData<Unit>()
-        refresh = data
-
-        fun setDevices() {
-            var finalList = bleDevices.value?.filter { it.isValid }?: run {
-                data.postValue(Unit)
-                return
-            }
-
-            val query = searchQuery?.value
-            if (query != null && query.isNotEmpty()) {
-                finalList = finalList.filter { it.name?.contains(query, true)?: false }
-            }
-            displayedDevices.postValue(finalList.sortedWith(compareBy { -it.rssi }))
-            data.postValue(Unit)
-            refresh = null
-        }
-
-        // Wait an arbitrary amount of time for BLE devices to be scanned
-        val timer = Timer()
-        timer.schedule(timerTask {
-            setDevices()
-        }, 3000)
-        return data
+    suspend fun updateSearchQuery(query: String) {
+        searchQuery.emit(query)
     }
 
     fun selectDevice(device: BleDevice) {
-        DeviceRepository.selectedDevice = device
+        DeviceRepository.selectedDevice.value = device
+    }
+
+    suspend fun refresh() {
+        refreshEvent.emit(Unit)
     }
 }
